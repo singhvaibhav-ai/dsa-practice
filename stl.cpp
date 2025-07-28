@@ -390,8 +390,59 @@ void explainunorderedSet()
     // rest all the functions are same as set
 }
 
+void explainMap()
+{
+    // map is a collection of key-value pairs in ascending order of keys, where each key is unique.
+    // Keys and values can be of any data type, but all keys and all values must be of the same type respectively.
+    map<int, string> mpp;
+    mpp[1] = "abc";
+    mpp[1] = "vik"; // overwrites the value of key 1
+    mpp[2] = "bcd";
+    mpp.emplace(3, "cat");
+    mpp.insert({4, "Vaibhav"});
+    for (auto it : mpp)
+    {
+        cout << it.first << "->" << it.second << endl; // prints key and value pairs
+    }
+    cout << endl;
+
+    auto it = mpp.find(4); // iterator pointing to key 4
+    if (it != mpp.end())
+    {
+        cout << (*it).first << "->" << (*it).second << endl;
+    }
+
+    // lower bound returns an iterator that points to the first element that is >= key given
+    auto it2 = mpp.lower_bound(2); // points to key 2
+    // upper bound returns an iterator that points to the first element that is > key given
+    auto it3 = mpp.upper_bound(2); // points to key 3
+}
+
+void explainUnorderedMap()
+{
+    unordered_map<int, string> mpp;
+    mpp[1] = "abc";
+    mpp[1] = "vik";
+    mpp[2] = "bcd";
+    mpp.emplace(3, "cat");
+    mpp.insert({4, "Vaibhav"});
+    for (auto it : mpp)
+    {
+        cout << it.first << "->" << it.second << endl; // prints key and value pairs in random order.
+    }
+    cout << endl;
+
+    auto it = mpp.find(4); // less time complexity as unordered_set O(1) and is almost constant until there are collisions inside the map.
+    if (it != mpp.end())
+    {
+        cout << (*it).first << "->" << (*it).second << endl;
+    }
+
+    // no lower_bound or upper_bound functions in unordered_map as it does not maintain any order of keys.
+}
+
 int main()
 {
-    explainMultiSet();
+    explainMap();
     return 0;
 }
