@@ -539,8 +539,72 @@ void explainFind()
     }
 }
 
+void explainNextPermutation()
+{
+    string str = "abc";
+
+    // Prints all permutations of "abc" in lexicographical order
+    do
+    {
+        cout << str << endl;
+    } while (next_permutation(str.begin(), str.end()));
+    cout << endl;
+
+    // Resets str back to "abc" after full permutation cycle
+    str = "abc";
+
+    // Only permutes the first two characters: 'a' and 'b'
+    do
+    {
+        cout << str << endl;
+    } while (next_permutation(str.begin(), str.begin() + 2));
+    cout << endl;
+
+    string str1 = "bca";
+
+    // Starts from "bca" and prints remaining permutations in lexicographical order
+    do
+    {
+        cout << str1 << endl;
+    } while (next_permutation(str1.begin(), str1.end()));
+
+    // works for vectors and arrays as well.
+}
+
+void explainPrevPermutation()
+{
+    string str = "cba";
+
+    // Prints all permutations of "cba" in reverse lexicographical order
+    do
+    {
+        cout << str << endl;
+    } while (prev_permutation(str.begin(), str.end()));
+    cout << endl;
+
+    // Reset to "cba" to start fresh
+    str = "cba";
+
+    // Only permutes the first two characters: 'c' and 'b'
+    do
+    {
+        cout << str << endl;
+    } while (prev_permutation(str.begin(), str.begin() + 2));
+    cout << endl;
+
+    string str1 = "bca";
+
+    // Starts from "bca" and prints permutations in reverse lexicographical order
+    do
+    {
+        cout << str1 << endl;
+    } while (prev_permutation(str1.begin(), str1.end()));
+
+    // works for vectors and arrays as well.
+}
+
 int main()
 {
-    explainFind();
+    explainPrevPermutation();
     return 0;
 }
