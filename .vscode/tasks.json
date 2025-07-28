@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build and Run C++",
+      "type": "shell",
+      "command": "/opt/homebrew/bin/g++-15",
+      "args": [
+        "-std=c++17",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}",
+        "&&",
+        "${fileDirname}/${fileBasenameNoExtension}"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
