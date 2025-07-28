@@ -625,8 +625,16 @@ void explainReverse()
     cout << endl;
 }
 
+void explainPow()
+{
+    // pow function is used to calculate the power of a number.
+    cout << pow(2, 3) << endl;  // prints 8 (2^3)
+    cout << pow(5, 2) << endl;  // prints 25 (5^2)
+    cout << pow(10, 0) << endl; // prints 1 (10^0)
+}
+
 int main()
 {
-    explainReverse();
+    explainPow();
     return 0;
 }
