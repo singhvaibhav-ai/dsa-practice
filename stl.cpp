@@ -513,8 +513,34 @@ void explainCount()
     cout << count(vec.begin(), vec.end(), num) << endl; // counts the occurrences of num (i.e. 5) in the vector, which is 3
 }
 
+void explainFind()
+{
+    int arr[5] = {6, 2, 1, 1, 0};
+    auto it = find(arr, arr + 5, 1); // returns an iterator pointing to the first occurrence of 1 in the array
+    if (it != arr + 5)
+    {
+        cout << *it << endl; // prints 1 if found
+    }
+    else
+    {
+        cout << "Not found" << endl; // prints if not found
+    }
+
+    // works with vectors as well
+    vector<int> vec = {5, 5, 1, 5, 1};
+    auto it1 = find(vec.begin(), vec.end(), 1); // returns an iterator pointing to the first occurrence of 1 in the vector
+    if (it1 != vec.end())
+    {
+        cout << *it1 << endl; // prints 1 if found
+    }
+    else
+    {
+        cout << "Not found" << endl; // prints if not found
+    }
+}
+
 int main()
 {
-    explainCount();
+    explainFind();
     return 0;
 }
