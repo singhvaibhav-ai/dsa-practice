@@ -501,8 +501,20 @@ void explainAccumulate()
     cout << accumulate(arr + 1, arr + 4, 10); // sums elements at index 1, 2, 3 (i.e., 2+1+7) and adds 10 → result is 20
 }
 
+void explainCount()
+{
+    int arr[5] = {6, 2, 1, 1, 0};
+    int num = 1;
+    cout << count(arr, arr + 5, num) << endl; // counts the occurrences of num (i.e. 1) in the array, which is 2
+
+    // works with vectors as well
+    vector<int> vec = {5, 5, 1, 5, 1};
+    num = 5;
+    cout << count(vec.begin(), vec.end(), num) << endl; // counts the occurrences of num (i.e. 5) in the vector, which is 3
+}
+
 int main()
 {
-    explainAccumulate();
+    explainCount();
     return 0;
 }
