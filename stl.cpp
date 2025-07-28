@@ -441,8 +441,31 @@ void explainUnorderedMap()
     // no lower_bound or upper_bound functions in unordered_map as it does not maintain any order of keys.
 }
 
+void explainMultiMap()
+{
+    multimap<int, char> mpp;
+    // multimap is similar to map, but it allows duplicate keys.
+    mpp.insert({3, 'b'});
+    mpp.insert({1, 'a'});
+    mpp.insert({1, 'b'});
+    mpp.insert({1, 'a'});
+    mpp.insert({2, 'a'});
+    mpp.insert({2, 'a'});
+    mpp.insert({2, 'b'});
+
+    for (auto it : mpp)
+    {
+        cout << it.first << "->" << it.second << endl; // prints key and value pairs in ascending order of keys only and not sorted based on values.
+    }
+    auto it = mpp.equal_range(2); // Returns a pair of iterators: first points to the first element with key 2, second points to the element after the last key 2.
+    for (auto i = it.first; i != it.second; i++)
+    {
+        cout << (*i).first << "->" << (*i).second << endl; // prints all the values corresponding to key 2
+    }
+}
+
 int main()
 {
-    explainMap();
+    explainMultiMap();
     return 0;
 }
