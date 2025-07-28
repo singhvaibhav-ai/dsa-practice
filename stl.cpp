@@ -464,8 +464,37 @@ void explainMultiMap()
     }
 }
 
+// FUNCTIONS and ALGORITHMS
+
+void explainSort()
+{
+    int arr[5] = {6, 2, 1, 7, 8};
+    sort(arr, arr + 5); // sorts the array in ascending order
+    for (int i = 0; i < 5; i++)
+    {
+        cout << arr[i] << " "; // prints 1 2 6 7 8
+    }
+    cout << endl;
+
+    int arr[5] = {6, 2, 1, 7, 0};
+    sort(arr + 1, arr + 4); // sorts the array from index 1 to index 3
+    for (int i = 0; i < 5; i++)
+    {
+        cout << arr[i] << " "; // prints 6 1 2 7 0
+    }
+    cout << endl;
+
+    vector<int> vec = {5, 7, 1, 0, 1};
+    sort(vec.begin() + 1, vec.begin() + 3); // sorts the vector from index 1 to index 2
+    for (auto it : vec)
+    {
+        cout << it << " "; // prints 5 1 7 0 1
+    }
+    cout << endl;
+}
+
 int main()
 {
-    explainMultiMap();
+    explainSort();
     return 0;
 }
