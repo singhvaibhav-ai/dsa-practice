@@ -603,8 +603,19 @@ void explainPrevPermutation()
     // works for vectors and arrays as well.
 }
 
+void explainMaxAndMinElement()
+{
+    int arr[] = {7, 6, 5, 10, 9};
+    auto it = max_element(arr, arr + 5); // returns an iterator pointing to the maximum element in the array
+    cout << *it << endl;                 // prints 10
+
+    // same for min_element
+    auto it1 = min_element(arr, arr + 5); // returns an iterator pointing to the minimum element in the array
+    cout << *it1 << endl;                 // prints 5
+}
+
 int main()
 {
-    explainPrevPermutation();
+    explainMaxAndMinElement();
     return 0;
 }
