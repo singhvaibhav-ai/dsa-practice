@@ -614,8 +614,19 @@ void explainMaxAndMinElement()
     cout << *it1 << endl;                 // prints 5
 }
 
+void explainReverse()
+{
+    int arr[] = {7, 6, 5, 10, 9};
+    reverse(arr, arr + 5); // reverses the array in place
+    for (int i = 0; i < 5; i++)
+    {
+        cout << arr[i] << " "; // prints 9 10 5 6 7
+    }
+    cout << endl;
+}
+
 int main()
 {
-    explainMaxAndMinElement();
+    explainReverse();
     return 0;
 }
