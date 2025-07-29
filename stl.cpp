@@ -633,8 +633,56 @@ void explainPow()
     cout << pow(10, 0) << endl; // prints 1 (10^0)
 }
 
+bool customComparator(int el1, int el2) // overwritten the internal comparator function to sort in descending order.
+{
+    if (el1 < el2)
+        return false;
+    return true;
+}
+
+bool customComparator1(pair<int, int> el1, pair<int, int> el2) // custom comparator for pairs
+{
+    if (el1.second > el2.second)
+        return true;
+    if (el1.second < el2.second)
+        return false;
+    if (el1.first < el2.first)
+        return true;
+    return false;
+}
+
+void explainComparator()
+{
+    // lets first understand how the internal comparator works in STL.
+    // el1 is 5
+    // el2 is 6
+    // internal comparator that takes el1 and el2 and tells you if el1 should be before el2 or not.
+    int arr[] = {5, 6, 1, 2};
+    sort(arr, arr + 4); // sorts the array in ascending order
+    for (int i = 0; i < 4; i++)
+    {
+        cout << arr[i] << " "; // prints 1 2 5 6
+    }
+    cout << endl;
+    sort(arr, arr + 4, customComparator); // sorts the array in descending order using the custom comparator
+    for (int i = 0; i < 4; i++)
+    {
+        cout << arr[i] << " "; // prints 6 5 2 1
+    }
+    cout << endl;
+
+    pair<int, int> pr[] = {{1, 6}, {1, 5}, {2, 6}, {2, 9}, {3, 9}};
+    // sort it according to second element in descending order and if second elements are same then sort according to first element in ascending order.
+    // {2, 9}, {3, 9}, {1, 6}, {2, 6}, {1, 5}
+    sort(pr, pr + 5, customComparator1);
+    for (int i = 0; i < 5; i++)
+    {
+        cout << "{" << pr[i].first << ", " << pr[i].second << "} ";
+    }
+    cout<<endl;
+}
 int main()
 {
-    explainPow();
+    explainComparator();
     return 0;
 }
