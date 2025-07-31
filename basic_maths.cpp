@@ -47,6 +47,18 @@ int countOddDigits(int n)
     return countOdd;
 }
 
+// Reverse a number
+int reverseNumber(int n)
+{
+    int revNum = 0, num = abs(n);
+    while (num != 0)
+    {
+        int digit = num % 10;
+        revNum = revNum * 10 + digit;
+        num = num / 10;
+    }
+}
+
 int main()
 {
     cout << countDigits(-12345);
