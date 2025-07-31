@@ -79,6 +79,22 @@ bool isPalindrome(int n)
     return n == reverseNumber(n);
 }
 
+// Return the Largest Digit in a Number
+// TC = O(log n)
+// SC = O(1)
+int largestDigit(int n)
+{
+    int largest = 0, num = abs(n);
+    while (num != 0)
+    {
+        int digit = num % 10;
+        if (digit > largest)
+            largest = digit;
+        num = num / 10;
+    }
+    return largest;
+}
+
 int main()
 {
     cout << reverseNumber(-12345);
