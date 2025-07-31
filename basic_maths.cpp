@@ -48,6 +48,8 @@ int countOddDigits(int n)
 }
 
 // Reverse a number
+// TC = O(log n)
+// SC = O(1)
 int reverseNumber(int n)
 {
     int revNum = 0, num = abs(n);
@@ -57,10 +59,28 @@ int reverseNumber(int n)
         revNum = revNum * 10 + digit;
         num = num / 10;
     }
+    return revNum;
+}
+
+// Palindrome number
+// TC = O(log n)
+// SC = O(1)
+bool isPalindrome(int n)
+{
+    int revNum = 0, num = abs(n);
+    while (num != 0)
+    {
+        int digit = num % 10;
+        revNum = revNum * 10 + digit;
+        num = num / 10;
+    }
+    return revNum == abs(n);
+    // or
+    return n == reverseNumber(n);
 }
 
 int main()
 {
-    cout << countDigits(-12345);
+    cout << reverseNumber(-12345);
     return 0;
 }
