@@ -124,6 +124,21 @@ long long factorial(int n)
         return n * factorial(n - 1);
 }
 
+// Check if the Number is Armstrong
+// TC = O(log n)
+// SC = O(1)
+bool isArmstrong(int n)
+{
+    int originalNum = n, sum = 0, count = countDigits(n);
+    while (n != 0)
+    {
+        int digit = n % 10;
+        sum += pow(digit, count);
+        n /= 10;
+    }
+    return sum == originalNum;
+}
+
 int main()
 {
     cout << reverseNumber(-12345);
