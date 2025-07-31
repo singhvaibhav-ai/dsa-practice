@@ -95,6 +95,35 @@ int largestDigit(int n)
     return largest;
 }
 
+// Factorial of a given number
+// basic loop approach
+// TC = O(n)
+// SC = O(1)
+long long factorial1(int n)
+{
+    long long fact = 1;
+    if (n > 0)
+    {
+        for (int i = 1; i <= n; i++)
+        {
+            fact *= i;
+        }
+        return fact;
+    }
+    return fact;
+}
+
+// Recursive approach
+// TC = O(n)
+// SC = O(n)
+long long factorial(int n)
+{
+    if (n == 0)
+        return 1;
+    if (n > 0)
+        return n * factorial(n - 1);
+}
+
 int main()
 {
     cout << reverseNumber(-12345);
