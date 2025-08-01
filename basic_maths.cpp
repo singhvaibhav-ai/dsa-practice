@@ -125,11 +125,11 @@ long long factorial(int n)
 }
 
 // Check if the Number is Armstrong
-// TC = O(log n)
+// TC = O(log n * log2(log n)) // log n for number of digits, log2(log n) for power calculation
 // SC = O(1)
 bool isArmstrong(int n)
 {
-    int originalNum = n, sum = 0, count = countDigits(n);
+    int originalNum = n, sum = 0, count = log10(abs(n)) + 1;
     while (n != 0)
     {
         int digit = n % 10;
@@ -137,6 +137,46 @@ bool isArmstrong(int n)
         n /= 10;
     }
     return sum == originalNum;
+}
+
+// Check for perfect number
+// A perfect number is a positive integer that is equal to the sum of its proper divisors
+// Brute force approach
+// TC = O(n)
+// SC = O(1)
+bool isPerfect(int n)
+{
+    if (n <= 0)
+        return false;
+    int sum = 0;
+    for (int i = 1; i < n; i++)
+    {
+        if (n % i == 0)
+        {
+            sum += i;
+        }
+    }
+    return (sum == n);
+}
+
+// Optimized approach
+// TC = O(sqrt(n))
+// SC = O(1)
+bool isPerfectOptimal(int n)
+{
+    if (n <= 0)
+        return false;
+    int sum = 1; // 1 is a proper divisor of any positive integer
+    for (int i = 2; i * i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            sum += i;
+            if (i != n / i) // Avoid adding the square root twice
+                sum += n / i;
+        }
+    }
+    return (sum == n);
 }
 
 int main()
