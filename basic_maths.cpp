@@ -221,6 +221,31 @@ int countPrimes(int n)
     return count;
 }
 
+// GCD of Two Numbers
+// TC = O(min(a, b))
+// SC = O(1)
+int gcd(int a, int b)
+{
+    for (int i = min(a, b); i >= 1; i--)
+    {
+        if (a % i == 0 && b % i == 0)
+            return i;
+    }
+}
+
+// Optimal approach using Euclidean algorithm
+
+int gcdEuclidean(int a, int b)
+{
+    while (b != 0)
+    {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a; // bachpan me jaise hcf nikalte the wahi hai
+}
+
 int main()
 {
     cout << reverseNumber(-12345);
