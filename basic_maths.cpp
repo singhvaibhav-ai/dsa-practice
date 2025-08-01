@@ -209,6 +209,18 @@ bool isPrime(int n)
     return true;
 }
 
+// Count of prime numbers till N
+int countPrimes(int n)
+{
+    int count = 0;
+    for (int i = 2; i <= n; i++)
+    {
+        if (isPrime(i))
+            count++;
+    }
+    return count;
+}
+
 int main()
 {
     cout << reverseNumber(-12345);
