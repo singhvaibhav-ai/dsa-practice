@@ -164,7 +164,7 @@ bool isPerfect(int n)
 // SC = O(1)
 bool isPerfectOptimal(int n)
 {
-    if (n <= 0)
+    if (n <= 1)
         return false;
     int sum = 1; // 1 is a proper divisor of any positive integer
     for (int i = 2; i * i <= n; i++)
@@ -177,6 +177,36 @@ bool isPerfectOptimal(int n)
         }
     }
     return (sum == n);
+}
+
+// Check for Prime Number
+// Brute force approach
+// TC = O(n)
+// SC = O(1)
+bool isPrimeBruteForce(int n)
+{
+    if (n <= 1)
+        return false;
+    for (int i = 2; i < n; i++)
+    {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
+}
+// Optimal approach
+// TC = O(sqrt(n))
+// SC = O(1)
+bool isPrime(int n)
+{
+    if (n <= 1)
+        return false;
+    for (int i = 2; i * i <= n; i++)
+    {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
 }
 
 int main()
