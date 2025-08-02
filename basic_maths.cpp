@@ -234,7 +234,8 @@ int gcd(int a, int b)
 }
 
 // Optimal approach using Euclidean algorithm
-
+// TC = O(log(min(a, b)))
+// SC = O(1)
 int gcdEuclidean(int a, int b)
 {
     while (b != 0)
@@ -244,6 +245,49 @@ int gcdEuclidean(int a, int b)
         a = temp;
     }
     return a; // bachpan me jaise hcf nikalte the wahi hai
+}
+
+// LCM of two numbers
+// Striver's Brute force approach
+// TC=O(a*b)
+// SC=O(1)
+int lcm(int a, int b)
+{
+    int i = 1;
+    int maxNum = max(a, b);
+    do
+    {
+        int multiple = i * maxNum;
+        if (multiple % a == 0 && multiple % b == 0)
+        {
+            return multiple;
+        }
+        i = i + 1;
+    } while (1);
+
+    return -1; // This line will never be reached, but it's good practice to have a return statement.
+}
+
+// My approach
+// TC = O(min(a, b))
+// SC = O(1)
+int lcmMyApproach(int a, int b)
+{
+    for (int i = 1; i <= min(a, b); i++)
+    {
+        if (i * max(a, b) % min(a, b) == 0)
+        {
+            return i * max(a, b);
+        }
+    }
+}
+
+// Optimal approach using GCD
+// TC = O(log(min(a, b)))
+// SC = O(1)
+int lcmOptimal(int a, int b)
+{
+    return ((a * b) / gcdEuclidean(a, b)); // LCM(a, b) = (a * b) / GCD(a, b)
 }
 
 int main()
