@@ -290,6 +290,27 @@ int lcmOptimal(int a, int b)
     return ((a * b) / gcdEuclidean(a, b)); // LCM(a, b) = (a * b) / GCD(a, b)
 }
 
+// Divisors of a number
+// TC = O(sqrt(n))
+// SC = O(1)
+vector<int> getDivisors(int n)
+{
+    vector<int> divisors;
+    for (int i = 1; i * i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            divisors.push_back(i);
+            if (i != n / i)
+            {
+                divisors.push_back(n / i);
+            }
+        }
+    }
+    sort(divisors.begin(), divisors.end());
+    return divisors;
+}
+
 int main()
 {
     cout << reverseNumber(-12345);
