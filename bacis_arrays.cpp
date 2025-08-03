@@ -30,23 +30,7 @@ int countOdd(int arr[], int n)
     return oddCount;
 }
 
-// Check if the Array is Sorted
-// TC = O(n)
-// SC = O(1)
-bool isSorted(int arr[], int n)
-{
-    for (int i = 0; i < n - 1; i++)
-    {
-        if (arr[i] > arr[i + 1])
-        {
-            return false;
-        }
-    }
-    return true;
-}
-
 // Reverse an Array
-
 // brute force approach (using extra array)
 // TC = O(n)
 // SC = O(n)
@@ -90,6 +74,21 @@ void reverseArrayOptimal2(int arr[], int n)
         left++;
         right--;
     }
+}
+
+// Check if the Array is Sorted
+// TC = O(n)
+// SC = O(1)
+bool isSorted(int arr[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (arr[i] > arr[i + 1])
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
 int main()
