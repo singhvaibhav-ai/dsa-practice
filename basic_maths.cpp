@@ -2,7 +2,6 @@
 using namespace std;
 
 // Count all Digits of a Number
-
 // bruteforce approach
 // TC= O(log n)
 // SC= O(1)
