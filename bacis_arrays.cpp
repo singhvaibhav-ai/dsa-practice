@@ -46,6 +46,8 @@ bool isSorted(int arr[], int n)
 }
 
 // Reverse an Array
+
+// brute force approach (using extra array)
 // TC = O(n)
 // SC = O(n)
 void reverseArray(int arr[], int n)
@@ -60,6 +62,36 @@ void reverseArray(int arr[], int n)
         arr[i] = tempArr[i];
     }
 }
+
+// optimal approach (two-pointer with temp variable)
+// TC = O(n)
+// SC = O(1)
+// swap karne ke liye maths bhi use kar sakte hai without temp variable
+void reverseArrayOptimal(int arr[], int n)
+{
+    for (int i = 0; i < n / 2; i++)
+    {
+        int temp = arr[i];
+        arr[i] = arr[n - 1 - i];
+        arr[n - 1 - i] = temp;
+    }
+}
+
+// optimal approach (two-pointer with STL swap)
+// TC = O(n)
+// SC = O(1)
+// for loop bhi use kar sakte hai, yeh while loop version hai
+void reverseArrayOptimal2(int arr[], int n)
+{
+    int left = 0, right = n - 1;
+    while (left < right)
+    {
+        swap(arr[left], arr[right]);
+        left++;
+        right--;
+    }
+}
+
 int main()
 {
     int arr[] = {1, 2, 3, 4, 5};
