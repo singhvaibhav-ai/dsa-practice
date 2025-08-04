@@ -68,6 +68,58 @@ int highest_occurrence_optimal(int arr[], int n)
 }
 
 // Second Highest Occurring Element
+// Brute force approach
+// TC = O(n^2)
+// SC = O(max(arr))
+int second_highest_occurrence_brute(int arr[], int n)
+{
+    int maxNum = arr[0];
+    for (int i = 1; i < n; i++)
+    {
+        maxNum = std::max(maxNum, arr[i]);
+    }
+
+    int vis[maxNum + 1] = {0};
+    int maxFreq = 0, secondMaxFreq = 0;
+    int el1 = -1, el2 = -1;
+    for (int i = 0; i < n; i++)
+    {
+        if (vis[arr[i]] == 0)
+        {
+            vis[arr[i]] = 1;
+            int cnt = 0;
+            for (int j = 0; j < n; j++)
+            {
+                if (arr[i] == arr[j])
+                    cnt++;
+            }
+
+            if (cnt > maxFreq)
+            {
+                secondMaxFreq = maxFreq;
+                el2 = el1;
+                maxFreq = cnt;
+                el1 = arr[i];
+            }
+            else if (cnt == maxFreq && arr[i] < el1)
+            {
+                el1 = arr[i];
+            }
+            else if (cnt > secondMaxFreq && cnt < maxFreq)
+            {
+                secondMaxFreq = cnt;
+                el2 = arr[i];
+            }
+            else if (cnt == secondMaxFreq && arr[i] < el2)
+            {
+                el2 = arr[i];
+            }
+        }
+    }
+
+    return (secondMaxFreq == 0) ? -1 : el2;
+}
+
 // Optimal approach
 // TC = O(n)
 // SC = O(max(arr))
