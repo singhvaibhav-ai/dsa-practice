@@ -68,48 +68,51 @@ int highest_occurrence_optimal(int arr[], int n)
 }
 
 // Second Highest Occurring Element
-int second_highest_occurrence(int arr[], int n)
+// Optimal approach
+// TC = O(n)
+// SC = O(max(arr))
+int second_highest_occurrence_optimal(int arr[], int n)
 {
     int maxNum = arr[0];
     for (int i = 1; i < n; i++)
     {
-        maxNum = max(maxNum, arr[i]);
+        maxNum = std::max(maxNum, arr[i]);
     }
-
     int freq[maxNum + 1] = {0};
     for (int i = 0; i < n; i++)
     {
         freq[arr[i]]++;
     }
-
     int firstMax = 0, secondMax = 0;
+    int el1 = -1, el2 = -1;
     for (int i = 0; i <= maxNum; i++)
     {
-        if (freq[i] > firstMax)
+        int cnt = freq[i];
+        if (cnt == 0)
+            continue;
+
+        if (cnt > firstMax)
         {
             secondMax = firstMax;
-            firstMax = freq[i];
+            el2 = el1;
+            firstMax = cnt;
+            el1 = i;
         }
-        else if (freq[i] > secondMax && freq[i] < firstMax)
+        else if (cnt == firstMax && i < el1)
         {
-            secondMax = freq[i];
+            el1 = i;
+        }
+        else if (cnt > secondMax && cnt < firstMax)
+        {
+            secondMax = cnt;
+            el2 = i;
+        }
+        else if (cnt == secondMax && i < el2)
+        {
+            el2 = i;
         }
     }
-
-    if (secondMax == 0)
-        return -1; // important edge case fix
-
-    int ans = -1;
-    for (int i = 0; i <= maxNum; i++)
-    {
-        if (freq[i] == secondMax)
-        {
-            if (ans == -1 || i < ans)
-                ans = i;
-        }
-    }
-
-    return ans;
+    return (secondMax == 0) ? -1 : el2;
 }
 
 int main()
