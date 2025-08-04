@@ -67,6 +67,51 @@ int highest_occurrence_optimal(int arr[], int n)
     return el;
 }
 
+// Second Highest Occurring Element
+int second_highest_occurrence(int arr[], int n)
+{
+    int maxNum = arr[0];
+    for (int i = 1; i < n; i++)
+    {
+        maxNum = max(maxNum, arr[i]);
+    }
+
+    int freq[maxNum + 1] = {0};
+    for (int i = 0; i < n; i++)
+    {
+        freq[arr[i]]++;
+    }
+
+    int firstMax = 0, secondMax = 0;
+    for (int i = 0; i <= maxNum; i++)
+    {
+        if (freq[i] > firstMax)
+        {
+            secondMax = firstMax;
+            firstMax = freq[i];
+        }
+        else if (freq[i] > secondMax && freq[i] < firstMax)
+        {
+            secondMax = freq[i];
+        }
+    }
+
+    if (secondMax == 0)
+        return -1; // important edge case fix
+
+    int ans = -1;
+    for (int i = 0; i <= maxNum; i++)
+    {
+        if (freq[i] == secondMax)
+        {
+            if (ans == -1 || i < ans)
+                ans = i;
+        }
+    }
+
+    return ans;
+}
+
 int main()
 {
     int arr[] = {1, 2, 3, 2, 1, 1, 4, 7, 9};
