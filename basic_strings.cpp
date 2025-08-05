@@ -45,6 +45,32 @@ bool isPalindrome(string &str)
     return true;
 }
 
+// Largest odd number in a string
+// TC = O(n)
+// SC = O(1)
+string largestOddNumber(string &s)
+{
+    int j = -1, n = s.size();
+    for (int i = n - 1; i >= 0; i--)
+    {
+        if ((s[i] - '0') % 2 == 1)
+        {
+            j = i;
+            break;
+        }
+    }
+    if (j == -1)
+        return "";
+    int i = 0;
+    while (i <= j)
+    {
+        if (s[i] != '0')
+            break;
+        i++;
+    }
+    return s.substr(i, j - i + 1);
+}
+
 int main()
 {
     return 0;
