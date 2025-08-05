@@ -16,16 +16,33 @@ void reverseString(string &str)
 }
 
 // Optimal approach
+// TC = O(n)
+// SC = O(1)
 void reverseStringOptimal(string &str)
 {
-    int n = str.length();
-    int left = 0, right = n - 1;
+    int left = 0, right = str.size() - 1;
     while (left < right)
     {
         swap(str[left], str[right]);
         left++;
         right--;
     }
+}
+
+// Palindrome Check
+// TC = O(n)
+// SC = O(1)
+bool isPalindrome(string &str)
+{
+    int left = 0, right = str.size() - 1;
+    while (left < right)
+    {
+        if (str[left] != str[right])
+            return false;
+        left++;
+        right--;
+    }
+    return true;
 }
 
 int main()
