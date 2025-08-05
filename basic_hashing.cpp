@@ -167,6 +167,65 @@ int second_highest_occurrence_optimal(int arr[], int n)
     return (secondMax == 0) ? -1 : el2;
 }
 
+// Sum of Highest and Lowest Frequency
+// Brute force approach
+// TC = O(n^2)
+// SC = O(1)
+int sum_highest_lowest_frequency_brute(int arr[], int n)
+{
+    int maxFreq = 0;
+    int minFreq = n + 1;
+    int vis[10001] = {0};
+    for (int i = 0; i < n; i++)
+    {
+        if (vis[arr[i]] == 0)
+        {
+            vis[arr[i]] = 1;
+            int count = 0;
+            for (int j = 0; j < n; j++)
+            {
+                if (arr[j] == arr[i])
+                    count++;
+            }
+            if (count > maxFreq)
+                maxFreq = count;
+            if (count < minFreq)
+                minFreq = count;
+        }
+    }
+    return maxFreq + minFreq;
+}
+
+// Sum of Highest and Lowest Frequency
+// Optimal approach
+// TC = O(n)
+// SC = O(max(arr))
+int sum_highest_lowest_frequency(int arr[], int n)
+{
+    int maxNum = arr[0];
+    for (int i = 1; i < n; i++)
+        maxNum = max(maxNum, arr[i]);
+
+    int freq[maxNum + 1] = {0};
+
+    for (int i = 0; i < n; i++)
+        freq[arr[i]]++;
+
+    int highestFreq = 0;
+    int lowestFreq = n + 1; // worst case: frequency can't exceed n
+
+    for (int i = 0; i <= maxNum; i++)
+    {
+        if (freq[i] > 0)
+        {
+            highestFreq = max(highestFreq, freq[i]);
+            lowestFreq = min(lowestFreq, freq[i]);
+        }
+    }
+
+    return highestFreq + lowestFreq;
+}
+
 int main()
 {
     int arr[] = {1, 2, 3, 2, 1, 1, 4, 7, 9};
