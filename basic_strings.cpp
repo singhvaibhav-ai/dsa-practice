@@ -137,7 +137,7 @@ bool rotateString(string &s, string &goal)
 }
 
 // Optimal Approach
-// TC = O(n)
+// TC = O(n) + O(2n) = O(n)
 // SC = O(n)
 // Explanation: Concatenate the string with itself and check if the goal is a substring of this new string.
 bool rotateString(string &s, string &goal)
@@ -148,6 +148,37 @@ bool rotateString(string &s, string &goal)
     return temp.find(goal) != string::npos; // Rabin-Karp algorithm is used internally by std::string::find
 }
 
+// Valid Anagram
+// Sorting Approach (Brute Force)
+// TC = O(n log n)
+// SC = O(n)
+bool anagramStrings1(string &s, string &t)
+{
+    sort(s.begin(), s.end());
+    sort(t.begin(), t.end());
+    return s == t;
+}
+
+// Hashing Approach (Optimal)
+// TC = O(n)
+// SC = O(1)
+bool anagramStrings2(string &s, string &t)
+{
+    if (s.size() != t.size())
+        return false;
+    int hash_s[26] = {0}, hash_t[26] = {0};
+    for (int i = 0; i < s.size(); i++)
+    {
+        hash_s[s[i] - 'a']++;
+        hash_t[t[i] - 'a']++;
+    }
+    for (int i = 0; i < 26; i++)
+    {
+        if (hash_s[i] != hash_t[i])
+            return false;
+    }
+    return true;
+}
 int main()
 {
     return 0;
