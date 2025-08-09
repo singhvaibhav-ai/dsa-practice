@@ -72,6 +72,9 @@ string largestOddNumber(string &s)
 }
 
 // Longest common prefix
+// TC = O(maxlength of string * n * log n) + O(maxlength of string)
+// where n is the number of strings
+// SC = O(Maxlength of string)
 string longestCommonPrefix(vector<string> &strs)
 {
     if (strs.empty())
@@ -89,6 +92,28 @@ string longestCommonPrefix(vector<string> &strs)
         ans += first[i];
     }
     return ans;
+}
+
+// Isomorphic String
+// TC = O(n)
+// SC = O(2*256))
+bool isIsomorphic(string s, string t)
+{
+    if (s.size() != t.size())
+        return false;
+    int s_map[256] = {0}, t_map[256] = {0};
+    int n = s.size();
+    for (int i = 0; i < n; i++)
+    {
+        if (s_map[s[i]] != 0 || t_map[t[i]] != 0)
+        {
+            if (s_map[s[i]] != t[i] + 1 || t_map[t[i]] != s[i] + 1)
+                return false;
+        }
+        s_map[s[i]] = t[i] + 1;
+        t_map[t[i]] = s[i] + 1;
+    }
+    return true;
 }
 
 int main()
