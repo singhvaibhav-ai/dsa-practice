@@ -96,7 +96,7 @@ string longestCommonPrefix(vector<string> &strs)
 
 // Isomorphic String
 // TC = O(n)
-// SC = O(2*256))
+// SC = O(2*256)
 bool isIsomorphic(string s, string t)
 {
     if (s.size() != t.size())
@@ -114,6 +114,38 @@ bool isIsomorphic(string s, string t)
         t_map[t[i]] = s[i] + 1;
     }
     return true;
+}
+
+// Rotate String
+// Brute Force Approach
+// TC = O(n^2)
+// SC = O(n)
+bool rotateString(string &s, string &goal)
+{
+    if (s.size() != goal.size())
+        return false;
+    int n = s.size();
+    string left = "";
+    for (int i = 0; i < n; i++)
+    {
+        string right = s.substr(i);
+        if (right + left == goal)
+            return true;
+        left += s[i];
+    }
+    return false;
+}
+
+// Optimal Approach
+// TC = O(n)
+// SC = O(n)
+// Explanation: Concatenate the string with itself and check if the goal is a substring of this new string.
+bool rotateString(string &s, string &goal)
+{
+    if (s.size() != goal.size())
+        return false;
+    string temp = s + s;
+    return temp.find(goal) != string::npos; // Rabin-Karp algorithm is used internally by std::string::find
 }
 
 int main()
