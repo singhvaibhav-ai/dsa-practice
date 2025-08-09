@@ -179,6 +179,37 @@ bool anagramStrings2(string &s, string &t)
     }
     return true;
 }
+
+// Sort Characters by Frequency
+bool comparator(pair<int, char> &a, pair<int, char> &b)
+{
+    if (a.first < b.first)
+        return false;
+    if (a.first > b.first)
+        return true;
+    return a.second < b.second;
+}
+vector<char> sortByFrequency(string &s)
+{
+    pair<int, char> freq[26];
+    for (int i = 0; i < 26; i++)
+    {
+        freq[i] = {0, 'a' + i};
+    }
+    for (int i = 0; i < s.size(); i++)
+    {
+        freq[s[i] - 'a'].first++;
+    }
+    sort(freq, freq + 26, comparator);
+    vector<char> ans;
+    for (int i = 0; i < 26; i++)
+    {
+        if (freq[i].first == 0)
+            break;
+        ans.push_back(freq[i].second);
+    }
+    return ans;
+}
 int main()
 {
     return 0;
