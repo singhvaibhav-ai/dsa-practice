@@ -181,12 +181,14 @@ bool anagramStrings2(string &s, string &t)
 }
 
 // Sort Characters by Frequency
+// TC = O(n) + O(26 log 26) = O(n)
+// SC = O(26*2) + O(26) = O(1)
 bool comparator(pair<int, char> &a, pair<int, char> &b)
 {
-    if (a.first < b.first)
-        return false;
     if (a.first > b.first)
         return true;
+    if (a.first < b.first)
+        return false;
     return a.second < b.second;
 }
 vector<char> sortByFrequency(string &s)
