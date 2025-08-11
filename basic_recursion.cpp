@@ -71,6 +71,25 @@ bool palindromeCheck(string &s)
     return isPalindrome(s, left, right);
 }
 
+// Check if a Number is Prime or Not
+// TC = O(sqrt(n))
+// SC = O(sqrt(n))
+bool checkPrimeHelper(int num, int n)
+{
+    if (n * n > num)
+        return true;
+    if (num % n == 0)
+        return false;
+    return checkPrimeHelper(num, n + 1);
+}
+
+bool checkPrime(int num)
+{
+    if (num <= 1)
+        return false;
+    return checkPrimeHelper(num, 2);
+}
+
 int main()
 {
     int n;
