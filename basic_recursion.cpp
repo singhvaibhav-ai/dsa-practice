@@ -35,6 +35,24 @@ int arraySum(vector<int> &nums)
     return sum(nums, 0);
 }
 
+// Reverse a string
+// TC = O(n/2)
+// SC = O(n/2)
+void reverse(vector<char> &s, int left, int right)
+{
+    if (left >= right)
+        return;
+    swap(s[left], s[right]);
+    reverse(s, left + 1, right - 1);
+}
+vector<char> reverseString(vector<char> &s)
+{
+    int left = 0;
+    int right = s.size() - 1;
+    reverse(s, left, right);
+    return s;
+}
+
 int main()
 {
     int n;
