@@ -53,6 +53,24 @@ vector<char> reverseString(vector<char> &s)
     return s;
 }
 
+// Check if String is Palindrome or Not
+// TC = O(n)
+// SC = O(n)
+bool isPalindrome(string &s, int left, int right)
+{
+    if (left >= right)
+        return true;
+    if (s[left] != s[right])
+        return false;
+    return isPalindrome(s, left + 1, right - 1);
+}
+bool palindromeCheck(string &s)
+{
+    int left = 0;
+    int right = s.size() - 1;
+    return isPalindrome(s, left, right);
+}
+
 int main()
 {
     int n;
