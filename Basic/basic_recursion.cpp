@@ -124,6 +124,22 @@ bool isSorted(vector<int> &nums)
     return isSortedHelper(nums, 1);
 }
 
+// Sum of digits in a given number
+// TC = O(constant*log(n))
+// SC = O(log(n)) due to recursion stack
+int sum(int n)
+{
+    if (n == 0)
+        return 0;
+    return ((n % 10) + sum(n / 10));
+}
+int sumOfDigits(int n)
+{
+    if (n < 10)
+        return n;
+    return sumOfDigits(sum(n));
+}
+
 int main()
 {
     int n;
