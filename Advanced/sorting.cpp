@@ -2,6 +2,8 @@
 using namespace std;
 
 // Selection Sort
+// TC = O(n^2)
+// SC = O(1)
 void selectionSort(int arr[], int n)
 {
     for (int i = 0; i < n - 1; i++)
@@ -18,6 +20,7 @@ void selectionSort(int arr[], int n)
     }
 }
 
+// Bubble Sort
 int main()
 {
     return 0;
