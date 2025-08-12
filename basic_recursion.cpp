@@ -91,8 +91,8 @@ bool checkPrime(int num)
 }
 
 // Reverse an Array
-// TC = O(n)
-// SC = O(n) due to recursion stack
+// TC = O(n/2)
+// SC = O(n/2) due to recursion stack
 void reverse(vector<int> &nums, int left, int right)
 {
     if (left >= right)
@@ -112,16 +112,16 @@ vector<int> reverseArray(vector<int> &nums)
 // SC = O(n) due to recursion stack
 bool isSortedHelper(vector<int> &nums, int i)
 {
-    if (i >= nums.size() - 1)
+    if (i >= nums.size())
         return true;
-    if (nums[i] > nums[i + 1])
+    if (nums[i] < nums[i - 1])
         return false;
     return isSortedHelper(nums, i + 1);
 }
 
 bool isSorted(vector<int> &nums)
 {
-    return isSortedHelper(nums, 0);
+    return isSortedHelper(nums, 1);
 }
 
 int main()
