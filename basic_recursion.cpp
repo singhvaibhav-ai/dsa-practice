@@ -107,6 +107,23 @@ vector<int> reverseArray(vector<int> &nums)
     return nums;
 }
 
+// Check if the Array is Sorted
+// TC = O(n)
+// SC = O(n) due to recursion stack
+bool isSortedHelper(vector<int> &nums, int i)
+{
+    if (i >= nums.size() - 1)
+        return true;
+    if (nums[i] > nums[i + 1])
+        return false;
+    return isSortedHelper(nums, i + 1);
+}
+
+bool isSorted(vector<int> &nums)
+{
+    return isSortedHelper(nums, 0);
+}
+
 int main()
 {
     int n;
