@@ -45,7 +45,7 @@ void bubbleSort(int arr[], int n)
 }
 
 // Insertion Sort
-// TC = O(n^2)
+// TC = O(n^2) in worst and average case and O(n) in best case
 // SC = O(1)
 void insertionSort(int arr[], int n)
 {
