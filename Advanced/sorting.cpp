@@ -24,7 +24,7 @@ void selectionSort(int arr[], int n)
 }
 
 // Bubble Sort
-// TC = O(n^2)
+// TC = O(n^2) in worst case, and O(n) in best case
 // SC = O(1)
 void bubbleSort(int arr[], int n)
 {
@@ -44,7 +44,33 @@ void bubbleSort(int arr[], int n)
     }
 }
 
+// Insertion Sort
+// TC = O(n^2)
+// SC = O(1)
+void insertionSort(int arr[], int n)
+{
+    for (int i = 1; i < n; i++)
+    {
+        int j = i;
+        while (j > 0 && arr[j - 1] > arr[j])
+        {
+            swap(arr[j], arr[j - 1]);
+            j--;
+        }
+    }
+}
+
 int main()
 {
+    int n;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+    selectionSort(arr, n);
+    bubbleSort(arr, n);
+    insertionSort(arr, n);
     return 0;
 }
