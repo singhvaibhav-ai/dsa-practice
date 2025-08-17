@@ -61,6 +61,8 @@ void insertionSort(int arr[], int n)
 }
 
 // Merge Sort
+// TC = O(n*log2(n))
+// SC = O(n)
 void merge(vector<int> &vec, int low, int mid, int high)
 {
     vector<int> temp;
