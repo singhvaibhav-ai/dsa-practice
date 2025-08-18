@@ -68,9 +68,10 @@ void merge(vector<int> &vec, int low, int mid, int high)
     vector<int> temp;
     int left = low;
     int right = mid + 1;
+
     while (left <= mid && right <= high)
     {
-        if (vec[left] < vec[right])
+        if (vec[left] <= vec[right])
         {
             temp.push_back(vec[left]);
             left++;
@@ -80,23 +81,23 @@ void merge(vector<int> &vec, int low, int mid, int high)
             temp.push_back(vec[right]);
             right++;
         }
+    }
 
-        while (left <= mid)
-        {
-            temp.push_back(vec[left]);
-            left++;
-        }
+    while (left <= mid)
+    {
+        temp.push_back(vec[left]);
+        left++;
+    }
 
-        while (right <= high)
-        {
-            temp.push_back(vec[right]);
-            right++;
-        }
+    while (right <= high)
+    {
+        temp.push_back(vec[right]);
+        right++;
+    }
 
-        for (int i = low; i <= high; i++)
-        {
-            vec[i] = temp[i - low];
-        }
+    for (int i = low; i <= high; i++)
+    {
+        vec[i] = temp[i - low];
     }
 }
 
@@ -110,6 +111,47 @@ void mergeSort(vector<int> &vec, int low, int high)
     merge(vec, low, mid, high);
 }
 
+// Quick Sort
+// TC = O(n^2) in worst case O(nlogn) in best and average case
+// SC = O(logn) in best and average case and O(n) in worst case
+int partition(vector<int> &arr, int low, int high)
+{
+    int randomIndex = low + rand() % (high - low + 1);
+    swap(arr[low], arr[randomIndex]);
+    int pivot = arr[low];
+    int i = low;
+    int j = high;
+    while (i < j)
+    {
+        while (arr[i] <= pivot && i <= high - 1)
+        {
+            i++;
+        }
+        while (arr[j] > pivot && j >= low + 1)
+        {
+            j--;
+        }
+        if (i < j)
+            swap(arr[i], arr[j]);
+    }
+    swap(arr[low], arr[j]);
+    return j;
+}
+void quickSortHelper(vector<int> &arr, int low, int high)
+{
+    if (low < high)
+    {
+        int pIndex = partition(arr, low, high);
+        quickSortHelper(arr, low, pIndex - 1);
+        quickSortHelper(arr, pIndex + 1, high);
+    }
+}
+vector<int> quickSort(vector<int> &nums)
+{
+    int n = nums.size();
+    quickSortHelper(nums, 0, n - 1);
+    return nums;
+}
 int main()
 {
     int n;
