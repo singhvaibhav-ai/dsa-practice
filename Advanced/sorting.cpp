@@ -112,8 +112,8 @@ void mergeSort(vector<int> &vec, int low, int high)
 }
 
 // Quick Sort (Divide and Conquer (partition-based))
-// TC = O(n^2) in worst case O(nlogn) in best and average case
-// SC = O(logn) in best and average case and O(n) in worst case
+// TC = O(nlogn)
+// SC = O(1) - not taking recursive stack space into account
 int partition(vector<int> &arr, int low, int high)
 {
     int pivot = arr[low];
@@ -150,6 +150,7 @@ vector<int> quickSort(vector<int> &nums)
     quickSortHelper(nums, 0, n - 1);
     return nums;
 }
+
 int main()
 {
     int n;
