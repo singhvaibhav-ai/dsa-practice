@@ -1,5 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
+// Linear Search
+// TC = O(n)
+// SC = O(1)
 int linearSearch(vector<int> &nums, int target)
 {
     int n = nums.size();
