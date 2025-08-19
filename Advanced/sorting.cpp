@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Selection Sort
+// Selection Sort (Selects minimum and swaps)
 // TC = O(n^2)
 // SC = O(1)
 void selectionSort(int arr[], int n)
@@ -23,7 +23,7 @@ void selectionSort(int arr[], int n)
     }
 }
 
-// Bubble Sort
+// Bubble Sort (Pushes the max to last by adjacent swaps)
 // TC = O(n^2) in worst case, and O(n) in best case
 // SC = O(1)
 void bubbleSort(int arr[], int n)
@@ -44,7 +44,7 @@ void bubbleSort(int arr[], int n)
     }
 }
 
-// Insertion Sort
+// Insertion Sort (takes an element and place it in correct order)
 // TC = O(n^2) in worst and average case and O(n) in best case
 // SC = O(1)
 void insertionSort(int arr[], int n)
@@ -60,7 +60,7 @@ void insertionSort(int arr[], int n)
     }
 }
 
-// Merge Sort
+// Merge Sort (Divide and Merge)
 // TC = O(n*log2(n))
 // SC = O(n)
 void merge(vector<int> &vec, int low, int mid, int high)
@@ -111,13 +111,11 @@ void mergeSort(vector<int> &vec, int low, int high)
     merge(vec, low, mid, high);
 }
 
-// Quick Sort
+// Quick Sort (Divide and Conquer (partition-based))
 // TC = O(n^2) in worst case O(nlogn) in best and average case
 // SC = O(logn) in best and average case and O(n) in worst case
 int partition(vector<int> &arr, int low, int high)
 {
-    int randomIndex = low + rand() % (high - low + 1);
-    swap(arr[low], arr[randomIndex]);
     int pivot = arr[low];
     int i = low;
     int j = high;
