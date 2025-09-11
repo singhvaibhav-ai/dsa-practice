@@ -1,3 +1,4 @@
+# Linear Search
 # TC = O(n)
 # SC = O(1)
 def linearSearch(nums, target):

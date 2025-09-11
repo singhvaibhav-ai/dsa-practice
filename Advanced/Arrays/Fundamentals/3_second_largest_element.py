@@ -1,3 +1,4 @@
+# Second Largest Element
 # TC = O(n)
 # SC = O(1)
 def second_largest(nums):
