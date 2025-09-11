@@ -1,6 +1,8 @@
+# TC = O(n)
+# SC = O(1)
 def largest_element(nums):
     if not nums:
-        return None  # Handle empty array case
+        return None
     largest = nums[0]
     for num in nums:
         if num > largest:

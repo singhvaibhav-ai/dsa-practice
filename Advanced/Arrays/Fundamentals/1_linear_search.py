@@ -1,3 +1,5 @@
+# TC = O(n)
+# SC = O(1)
 def linearSearch(nums, target):
     for i in range(len(nums)):
         if nums[i] == target:

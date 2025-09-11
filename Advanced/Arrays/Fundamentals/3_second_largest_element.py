@@ -1,6 +1,8 @@
+# TC = O(n)
+# SC = O(1)
 def second_largest(nums):
     if len(nums) < 2:
-        return None  # Not enough elements for second largest
+        return None
 
     first = second = float("-inf")
 
