@@ -2,7 +2,7 @@
 
 
 # Brute Force Approach
-# TC = O(n)
+# TC = O(n+k)
 # SC = O(k)
 def rotateArrayBrute(nums, k):
     n = len(nums)
@@ -17,6 +17,21 @@ def rotateArrayBrute(nums, k):
 
 
 # Optimal Approach
+# TC = O(n)
+# SC = O(1)
+def rotateArrayOptimal(nums, k):
+    n = len(nums)
+    a = k % n
+    reverse(nums, 0, a - 1)
+    reverse(nums, a, n - 1)
+    reverse(nums, 0, n - 1)
+
+
+def reverse(arr, start, end):
+    while start < end:
+        arr[start], arr[end] = arr[end], arr[start]
+        start += 1
+        end -= 1
 
 
 nums = [1, 2, 3, 4, 5]
