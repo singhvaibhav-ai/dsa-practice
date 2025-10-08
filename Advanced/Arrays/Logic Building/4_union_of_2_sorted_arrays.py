@@ -24,10 +24,7 @@ def unionArrayBrute2(nums1, nums2):
 # Optimal Approach 1 (Classic Two Pointer Technique)
 # TC = O(n+m)
 # SC = O(n+m)
-# Optimal Approach (Refined)
-# TC = O(n+m)
-# SC = O(n+m)
-def unionArrayOptimalRefined(nums1, nums2):
+def unionArrayOptimal1(nums1, nums2):
     n = len(nums1)
     m = len(nums2)
     i, j = 0, 0
