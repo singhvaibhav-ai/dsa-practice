@@ -41,6 +41,11 @@ int lower_bound_optimal(vector<int> &nums, int x)
     return ans;
 }
 
+int lower_bound_builtin(vector<int> &nums, int x)
+{
+    return lower_bound(nums.begin(), nums.end(), x) - nums.begin();
+}
+
 int main()
 {
     vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
