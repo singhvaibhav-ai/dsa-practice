@@ -18,6 +18,8 @@ int upper_bound_brute(vector<int> &nums, int x)
 }
 
 // Optimal Approach
+// TC = O(log2 n)
+// SC = O(1)
 int upper_bound_optimal(vector<int> &nums, int x)
 {
     int n = nums.size();
@@ -35,6 +37,12 @@ int upper_bound_optimal(vector<int> &nums, int x)
             low = mid + 1;
     }
     return ans;
+}
+
+// Built-in function
+int upper_bound_builtin(vector<int> &nums, int x)
+{
+    return upper_bound(nums.begin(), nums.end(), x) - nums.begin();
 }
 
 int main()
