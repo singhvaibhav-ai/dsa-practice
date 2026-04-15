@@ -96,6 +96,42 @@ int singleNonDuplicateBS(vector<int> &nums)
     return -1;
 }
 
+int singleNonDuplicate(vector<int> &nums)
+{
+    int low = 0;
+    int high = nums.size() - 1;
+
+    // Notice we use < instead of <=.
+    // We terminate when low == high, pointing exactly at our target.
+    while (low < high)
+    {
+        int mid = low + (high - low) / 2;
+
+        // Force mid to be an even index (the start of a hypothetical pair)
+        if (mid % 2 == 1)
+        {
+            mid--;
+        }
+
+        // Because mid is even and low < high, mid + 1 is strictly within bounds.
+        // Check if the pair is intact.
+        if (nums[mid] == nums[mid + 1])
+        {
+            // Pattern is intact. The single element is further right.
+            // We add 2 because we know mid and mid+1 are not the answer.
+            low = mid + 2;
+        }
+        else
+        {
+            // Pattern is broken. The single element is either at mid or to the left.
+            high = mid;
+        }
+    }
+
+    // When low == high, we've pinned down the single element.
+    return nums[low];
+}
+
 int main()
 {
     vector<int> nums = {1, 1, 2, 3, 3, 4, 4, 8, 8};
